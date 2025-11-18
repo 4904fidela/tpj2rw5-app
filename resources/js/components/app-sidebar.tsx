@@ -10,10 +10,10 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, organization } from '@/routes';
+import { dashboard, organization, residents } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Network } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, Network, Users } from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -26,6 +26,11 @@ const mainNavItems: NavItem[] = [
         title: 'Struktur Organisasi',
         href: organization(),
         icon: Network,
+    },
+    {
+        title: 'Kependudukan',
+        href: residents(),
+        icon: Users,
     },
 ];
 

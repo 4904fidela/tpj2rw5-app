@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ResidentController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -18,6 +19,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('organization', function () {
         return Inertia::render('organization');
     })->name('organization');
+
+    Route::get('residents', [ResidentController::class, 'index'])
+        ->name('residents');
 });
 
 require __DIR__ . '/settings.php';

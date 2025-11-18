@@ -5,35 +5,35 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-  /**
-   * Run the migrations.
-   */
-  public function up(): void
-  {
-    Schema::create('residents', function (Blueprint $table) {
-      $table->id();
-      $table->foreignId('rt_id')->references('id')->on('rts');
-      $table->string('nik')->unique();
-      $table->string('kk')->unique();
-      $table->string('name');
-      $table->string('gender');
-      $table->date('birth_date');
-      $table->string('birth_place');
-      $table->string('address');
-      $table->string('marital_status');
-      $table->string('religion');
-      $table->string('education');
-      $table->string('occupation');
-      $table->timestamps();
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('residents', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('rt_id')->references('id')->on('rts');
+            $table->string('nik')->nullable()->unique();
+            $table->string('kk')->nullable()->unique();
+            $table->string('gender')->nullable();
+            $table->string('name')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('birth_place')->nullable();
+            $table->string('address')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('religion')->nullable();
+            $table->string('education')->nullable();
+            $table->string('occupation')->nullable();
+            $table->timestamps();
 
-    });
-  }
+        });
+    }
 
-  /**
-   * Reverse the migrations.
-   */
-  public function down(): void
-  {
-    Schema::dropIfExists('residents');
-  }
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('residents');
+    }
 };
