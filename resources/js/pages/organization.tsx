@@ -3,7 +3,11 @@ import OrganizationChart from '@/components/organization_chart/org-chart';
 import AppLayout from '@/layouts/app-layout';
 import { organization } from '@/routes';
 import { BreadcrumbItem } from '@/types';
-import { Position } from '@/types/organization';
+import {
+    OrganizationChartData,
+    OrganizationData,
+    Position,
+} from '@/types/pages/organization';
 import { Head } from '@inertiajs/react';
 import { ColumnDef } from '@tanstack/react-table';
 
@@ -14,32 +18,17 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
 ];
 
-export default function Organization() {
-    const chartData = [
-        {
-            id: 'resident1',
-            position: 'Ketua RT',
-            name: 'Aryan Shafa Wardana asdfasdfasdfasfasdfasdfasfsadfasdfasdfasdfasfd',
-        },
-        {
-            id: 'resident2',
-            position: 'Wakil Ketua RT',
-            parentId: 'resident1',
-            name: 'Almira',
-        },
-        {
-            id: 'resident3',
-            position: 'Sekretaris RT',
-            parentId: 'resident2',
-            name: 'Fidela',
-        },
-        {
-            id: 'resident4',
-            position: 'Bendahara RT',
-            parentId: 'resident2',
-            name: 'Putri',
-        },
-    ];
+export default function Organization({ data }: OrganizationData) {
+    const chartData: OrganizationChartData[] = data.committees.map(
+        (committee) => ({
+            id: String(committee.position.id),
+            position: committee.position.name,
+            parentId: committee.position.parentId
+                ? String(committee.position.parentId)
+                : undefined,
+            name: committee.resident_name,
+        }),
+    );
 
     const columns: ColumnDef<Position>[] = [
         {
@@ -49,29 +38,6 @@ export default function Organization() {
         {
             accessorKey: 'jobDescription',
             header: 'Tugas Pokok dan Fungsi',
-        },
-    ];
-
-    const data: Position[] = [
-        {
-            level: 'rt',
-            name: 'Ketua',
-            jobDescription: '- Menjadi ketua anjas',
-        },
-        {
-            level: 'rt',
-            name: 'Wakil Ketua',
-            jobDescription: '- Menjadi wakil ketua anjas',
-        },
-        {
-            level: 'rt',
-            name: 'Sekretaris',
-            jobDescription: '- Menjadi sekretaris anjas',
-        },
-        {
-            level: 'rt',
-            name: 'Bendahara',
-            jobDescription: '- Menjadi Bendahara anjas',
         },
     ];
 
@@ -88,7 +54,7 @@ export default function Organization() {
                 <div className="flex flex-col gap-4 rounded-xl border border-sidebar-border/70 p-4">
                     <span className="text-sm font-medium">Jabatan</span>
 
-                    <DataTable columns={columns} data={data} />
+                    <DataTable columns={columns} data={data.positions} />
                 </div>
             </div>
         </AppLayout>

@@ -1,4 +1,4 @@
-import { OrganizationChartData } from '@/types/organization';
+import { OrganizationChartData } from '@/types/pages/organization';
 import { OrgChart } from 'd3-org-chart';
 import { Scan, ZoomIn, ZoomOut } from 'lucide-react';
 import { RefObject } from 'react';

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Position;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,8 +19,10 @@ class PositionFactory extends Factory
     {
         return [
             'level' => fake()->randomElement(['rt', 'rw']),
-            'name' => fake()->name(),
-            'job_description' => fake()->paragraph()
+            'name' => fake()->jobTitle(),
+            'job_description' => fake()->paragraph(),
+            'is_assistant' => false,
+            'parent_position_id' => null
         ];
     }
 }

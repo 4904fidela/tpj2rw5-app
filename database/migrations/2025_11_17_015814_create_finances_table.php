@@ -20,7 +20,7 @@ return new class extends Migration {
         Schema::create('finance_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('finance_account_id')->references('id')->on('finance_accounts');
-            $table->foreignId('committee_id')->references('id')->on('committee'); // who did the transaction
+            $table->foreignId('committee_id')->references('id')->on('committees'); // who did the transaction
             $table->foreignId('rt_id')->references('id')->on('rts');
             $table->decimal('amount', 14, 2);
             $table->string('type');

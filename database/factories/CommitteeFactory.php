@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Position;
+use App\Models\Resident;
+use App\Models\Rt;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +20,9 @@ class CommitteeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'resident_id' => Resident::factory(),
+            'position_id' => Position::factory(),
+            'rt_id' => Rt::factory(),
         ];
     }
 }

@@ -15,4 +15,9 @@ class Rt extends Model
     {
         return $this->hasMany(Resident::class);
     }
+
+    public function committees(): HasMany
+    {
+        return $this->hasMany(Committee::class);
+    }
 }

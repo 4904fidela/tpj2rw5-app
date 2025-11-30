@@ -10,13 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('positions', function (Blueprint $table) {
+        Schema::create('committees', function (Blueprint $table) {
             $table->id();
-            $table->string('level');
-            $table->string('name');
-            $table->boolean('is_assistant')->default(false);
-            $table->text('job_description');
-            $table->foreignId('parent_position_id')->nullable()->references('id')->on('positions');
+            $table->foreignId('resident_id')->references('id')->on('residents');
+            $table->foreignId('position_id')->references('id')->on('positions');
+            $table->foreignId('rt_id')->references('id')->on('rts');
+
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('positions');
+        Schema::dropIfExists('committees');
     }
 };

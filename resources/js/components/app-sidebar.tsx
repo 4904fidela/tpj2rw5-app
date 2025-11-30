@@ -10,10 +10,17 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard, organization, residents } from '@/routes';
+import { dashboard, finances, organization, residents } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Network, Users } from 'lucide-react';
+import {
+    BookOpen,
+    Folder,
+    Landmark,
+    LayoutGrid,
+    Network,
+    Users,
+} from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
@@ -31,6 +38,11 @@ const mainNavItems: NavItem[] = [
         title: 'Kependudukan',
         href: residents(),
         icon: Users,
+    },
+    {
+        title: 'Keuangan',
+        href: finances(),
+        icon: Landmark,
     },
 ];
 
