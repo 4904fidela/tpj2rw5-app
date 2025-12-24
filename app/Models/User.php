@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rt_id',
+        'role',
     ];
 
     /**
@@ -48,5 +50,10 @@ class User extends Authenticatable
             'password' => 'hashed',
             'two_factor_confirmed_at' => 'datetime',
         ];
+    }
+
+    public function rt()
+    {
+        return $this->belongsTo(Rt::class);
     }
 }
